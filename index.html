@@ -3,344 +3,922 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HS Cafe</title>
+
+    <title>HS BREW | Coffee & Cafe</title>
 
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+        }
+
+        html {
             scroll-behavior: smooth;
         }
 
         body {
             font-family: Arial, sans-serif;
-            background: #f8f5f0;
-            color: #333;
+            background: #f7f3ee;
+            color: #2b1b14;
         }
 
-        /* NAVBAR */
+        /* ================= NAVBAR ================= */
+
         nav {
-            background: #3e2723;
-            padding: 15px 40px;
+            height: 75px;
+            background: #2b1b14;
+            color: white;
+
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            justify-content: space-between;
+
+            padding: 0 8%;
+
             position: sticky;
             top: 0;
             z-index: 1000;
         }
 
-        nav h2 {
-            color: white;
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+            letter-spacing: 2px;
         }
 
         nav ul {
-            list-style: none;
             display: flex;
-            gap: 25px;
+            list-style: none;
+            gap: 30px;
         }
 
         nav ul li a {
             color: white;
             text-decoration: none;
-            font-weight: bold;
+            font-size: 15px;
         }
 
         nav ul li a:hover {
-            color: #ffcc80;
+            color: #d6a77a;
         }
 
-        /* HERO */
+        .nav-btn {
+            background: #c58b5a;
+            color: white;
+            padding: 10px 18px;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+
+
+        /* ================= HERO ================= */
+
         .hero {
-            height: 500px;
+            min-height: 650px;
+
             display: flex;
-            justify-content: center;
             align-items: center;
-            text-align: center;
+
+            padding: 80px 8%;
+
             color: white;
 
-            background-image:
-                linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
+            background:
+                linear-gradient(
+                    rgba(30, 18, 12, 0.65),
+                    rgba(30, 18, 12, 0.65)
+                ),
                 url("https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1600&q=80");
 
             background-size: cover;
             background-position: center;
         }
 
-        .hero h1 {
-            font-size: 55px;
+        .hero-content {
+            max-width: 650px;
+        }
+
+        .small-title {
+            color: #d6a77a;
+            font-size: 16px;
+            letter-spacing: 3px;
             margin-bottom: 15px;
         }
 
+        .hero h1 {
+            font-size: 65px;
+            line-height: 1.05;
+            margin-bottom: 25px;
+        }
+
         .hero p {
-            font-size: 22px;
+            font-size: 19px;
+            line-height: 1.6;
+            color: #eee;
+            margin-bottom: 30px;
         }
 
-        /* GENERAL SECTION */
-        section {
-            padding: 70px 40px;
-            text-align: center;
+        .btn {
+            display: inline-block;
+
+            padding: 14px 28px;
+
+            background: #c58b5a;
+            color: white;
+
+            text-decoration: none;
+
+            border-radius: 5px;
+
+            font-weight: bold;
+
+            margin-right: 10px;
         }
 
-        section h2 {
-            font-size: 35px;
-            margin-bottom: 35px;
-            color: #3e2723;
+        .btn:hover {
+            background: #a96f42;
         }
 
-        /* MENU */
-        .menu-container {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            flex-wrap: wrap;
-        }
-
-        .food-card {
-            width: 300px;
+        .btn-light {
             background: white;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
-            transition: 0.3s;
+            color: #2b1b14;
         }
 
-        .food-card:hover {
-            transform: translateY(-8px);
+        .btn-light:hover {
+            background: #eee;
         }
 
-        .food-card img {
-            width: 100%;
-            height: 220px;
-            object-fit: cover;
+
+        /* ================= FEATURES ================= */
+
+        .features {
+            background: white;
+
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+
+            gap: 20px;
+
+            padding: 45px 8%;
         }
 
-        .food-card h3 {
-            margin: 15px 0 8px;
-            color: #3e2723;
-        }
-
-        .food-card p {
-            padding: 0 15px 20px;
-            color: #666;
-        }
-
-        /* ABOUT */
-        #about {
-            background: #efebe9;
-        }
-
-        #about p {
-            max-width: 700px;
-            margin: auto;
-            line-height: 1.7;
-            font-size: 18px;
-        }
-
-        button {
-            margin-top: 25px;
-            padding: 12px 25px;
-            border: none;
-            background: #6d4c41;
-            color: white;
-            border-radius: 8px;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background: #3e2723;
-        }
-
-        /* CONTACT */
-        form {
-            max-width: 500px;
-            margin: auto;
-        }
-
-        form input,
-        form textarea {
-            width: 100%;
-            padding: 12px;
-            margin: 10px 0;
-            border: 1px solid #ccc;
-            border-radius: 6px;
-        }
-
-        form textarea {
-            height: 120px;
-        }
-
-        /* FOOTER */
-        footer {
-            background: #3e2723;
-            color: white;
+        .feature {
             text-align: center;
             padding: 20px;
         }
 
-        /* MOBILE */
-        @media (max-width: 700px) {
+        .feature-icon {
+            font-size: 32px;
+            margin-bottom: 12px;
+        }
 
-            nav {
-                padding: 15px 20px;
-            }
+        .feature h3 {
+            margin-bottom: 8px;
+        }
+
+        .feature p {
+            color: #777;
+        }
+
+
+        /* ================= SECTION ================= */
+
+        .section {
+            padding: 85px 8%;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 40px;
+            margin-bottom: 12px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #777;
+            margin-bottom: 45px;
+        }
+
+
+        /* ================= MENU ================= */
+
+        .menu {
+            background: #f7f3ee;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .menu-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: 0.3s;
+            border: 1px solid #eee;
+        }
+
+        .menu-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+        }
+
+        .menu-card img {
+            width: 100%;
+            height: 230px;
+            object-fit: cover;
+        }
+
+        .menu-info {
+            padding: 22px;
+        }
+
+        .menu-info h3 {
+            font-size: 21px;
+            margin-bottom: 8px;
+        }
+
+        .menu-info p {
+            color: #777;
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+
+        .menu-bottom {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .price {
+            font-size: 20px;
+            font-weight: bold;
+            color: #a96f42;
+        }
+
+        .order-btn {
+            border: none;
+            background: #2b1b14;
+            color: white;
+            padding: 10px 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .order-btn:hover {
+            background: #4a3024;
+        }
+
+
+        /* ================= ABOUT ================= */
+
+        .about {
+            background: white;
+
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+
+            gap: 50px;
+
+            align-items: center;
+        }
+
+        .about img {
+            width: 100%;
+            height: 430px;
+            object-fit: cover;
+            border-radius: 15px;
+        }
+
+        .about-text h2 {
+            font-size: 42px;
+            margin-bottom: 20px;
+        }
+
+        .about-text p {
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+
+        /* ================= CONTACT ================= */
+
+        .contact {
+            background: #2b1b14;
+            color: white;
+            text-align: center;
+        }
+
+        .contact .section-title {
+            color: white;
+        }
+
+        .contact .section-subtitle {
+            color: #ccc;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            flex-wrap: wrap;
+        }
+
+        .contact-box {
+            min-width: 180px;
+        }
+
+        .contact-box h3 {
+            margin-bottom: 8px;
+            color: #d6a77a;
+        }
+
+        .contact-box p {
+            color: #ddd;
+        }
+
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            background: #1c100b;
+            color: white;
+            text-align: center;
+            padding: 30px;
+        }
+
+        footer p {
+            color: #aaa;
+        }
+
+
+        /* ================= MOBILE ================= */
+
+        @media (max-width: 900px) {
 
             nav ul {
-                gap: 10px;
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 48px;
+            }
+
+            .menu-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+
+            .about {
+                grid-template-columns: 1fr;
+            }
+        }
+
+
+        @media (max-width: 550px) {
+
+            .hero {
+                min-height: 550px;
             }
 
             .hero h1 {
                 font-size: 38px;
             }
 
-            section {
-                padding: 50px 20px;
+            .menu-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 32px;
+            }
+
+            .about-text h2 {
+                font-size: 32px;
             }
         }
+
     </style>
 </head>
 
 <body>
 
-    <!-- NAVBAR -->
+
+    <!-- ================= NAVBAR ================= -->
+
     <nav>
-        <h2>HS Cafe</h2>
+
+        <div class="logo">
+            HS BREW
+        </div>
 
         <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#menu">Menu</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
+
+            <li>
+                <a href="#home">Home</a>
+            </li>
+
+            <li>
+                <a href="#menu">Menu</a>
+            </li>
+
+            <li>
+                <a href="#about">About</a>
+            </li>
+
+            <li>
+                <a href="#contact">Contact</a>
+            </li>
+
         </ul>
+
+        <a href="#menu" class="nav-btn">
+            Order Now
+        </a>
+
     </nav>
 
 
-    <!-- HERO -->
+    <!-- ================= HERO ================= -->
+
     <section class="hero" id="home">
 
-        <div>
-            <h1>Welcome to HS Cafe</h1>
-            <p>Fresh Coffee, Fresh Mood.</p>
+        <div class="hero-content">
+
+            <div class="small-title">
+                WELCOME TO HS BREW
+            </div>
+
+            <h1>
+                Fresh Coffee.
+                Fresh Mood.
+            </h1>
+
+            <p>
+                Premium coffee, delicious food and a
+                comfortable place to enjoy every moment.
+            </p>
+
+            <a href="#menu" class="btn">
+                Explore Menu
+            </a>
+
+            <a href="#about" class="btn btn-light">
+                Our Story
+            </a>
+
         </div>
 
     </section>
 
 
-    <!-- MENU -->
-    <section id="menu">
+    <!-- ================= FEATURES ================= -->
 
-        <h2>Our Menu</h2>
+    <section class="features">
 
-        <div class="menu-container">
+        <div class="feature">
+
+            <div class="feature-icon">
+                ☕
+            </div>
+
+            <h3>
+                Fresh Coffee
+            </h3>
+
+            <p>
+                Freshly brewed coffee every day.
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <div class="feature-icon">
+                🥐
+            </div>
+
+            <h3>
+                Fresh Food
+            </h3>
+
+            <p>
+                Delicious snacks and bakery items.
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <div class="feature-icon">
+                ❤️
+            </div>
+
+            <h3>
+                Made With Love
+            </h3>
+
+            <p>
+                Quality and taste in every cup.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= MENU ================= -->
+
+    <section class="section menu" id="menu">
+
+        <h2 class="section-title">
+            Our Menu
+        </h2>
+
+        <p class="section-subtitle">
+            Some of our customer favorites
+        </p>
+
+
+        <div class="menu-grid">
+
 
             <!-- COFFEE -->
-            <div class="food-card">
+
+            <div class="menu-card">
 
                 <img
                     src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=800&q=80"
-                    alt="Hot Coffee"
+                    alt="Cappuccino"
                 >
 
-                <h3>Hot Coffee</h3>
-                <p>Freshly brewed coffee with a rich taste.</p>
+                <div class="menu-info">
+
+                    <h3>
+                        Classic Cappuccino
+                    </h3>
+
+                    <p>
+                        Rich espresso with smooth steamed milk.
+                    </p>
+
+                    <div class="menu-bottom">
+
+                        <span class="price">
+                            Rs. 350
+                        </span>
+
+                        <button
+                            class="order-btn"
+                            onclick="orderItem('Classic Cappuccino')"
+                        >
+                            Order
+                        </button>
+
+                    </div>
+
+                </div>
 
             </div>
 
 
-            <!-- BURGER -->
-            <div class="food-card">
+            <!-- LATTE -->
+
+            <div class="menu-card">
 
                 <img
-                    src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=800&q=80"
-                    alt="Special Burger"
+                    src="https://images.unsplash.com/photo-1570968915860-54d5c301fa9f?auto=format&fit=crop&w=800&q=80"
+                    alt="Latte"
                 >
 
-                <h3>Special Burger</h3>
-                <p>Juicy burger made with fresh ingredients.</p>
+                <div class="menu-info">
+
+                    <h3>
+                        Creamy Latte
+                    </h3>
+
+                    <p>
+                        Smooth espresso blended with creamy milk.
+                    </p>
+
+                    <div class="menu-bottom">
+
+                        <span class="price">
+                            Rs. 400
+                        </span>
+
+                        <button
+                            class="order-btn"
+                            onclick="orderItem('Creamy Latte')"
+                        >
+                            Order
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ICED COFFEE -->
+
+            <div class="menu-card">
+
+                <img
+                    src="https://images.unsplash.com/photo-1517701604599-bb29b565090c?auto=format&fit=crop&w=800&q=80"
+                    alt="Iced Coffee"
+                >
+
+                <div class="menu-info">
+
+                    <h3>
+                        Iced Coffee
+                    </h3>
+
+                    <p>
+                        Cold, refreshing and perfect for summer.
+                    </p>
+
+                    <div class="menu-bottom">
+
+                        <span class="price">
+                            Rs. 380
+                        </span>
+
+                        <button
+                            class="order-btn"
+                            onclick="orderItem('Iced Coffee')"
+                        >
+                            Order
+                        </button>
+
+                    </div>
+
+                </div>
 
             </div>
 
 
             <!-- CAKE -->
-            <div class="food-card">
+
+            <div class="menu-card">
 
                 <img
                     src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=800&q=80"
                     alt="Chocolate Cake"
                 >
 
-                <h3>Chocolate Cake</h3>
-                <p>Delicious chocolate cake for sweet lovers.</p>
+                <div class="menu-info">
+
+                    <h3>
+                        Chocolate Cake
+                    </h3>
+
+                    <p>
+                        Soft chocolate cake with rich creamy layers.
+                    </p>
+
+                    <div class="menu-bottom">
+
+                        <span class="price">
+                            Rs. 450
+                        </span>
+
+                        <button
+                            class="order-btn"
+                            onclick="orderItem('Chocolate Cake')"
+                        >
+                            Order
+                        </button>
+
+                    </div>
+
+                </div>
 
             </div>
+
+
+            <!-- BURGER -->
+
+            <div class="menu-card">
+
+                <img
+                    src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=800&q=80"
+                    alt="Burger"
+                >
+
+                <div class="menu-info">
+
+                    <h3>
+                        Classic Burger
+                    </h3>
+
+                    <p>
+                        Juicy burger served with fresh ingredients.
+                    </p>
+
+                    <div class="menu-bottom">
+
+                        <span class="price">
+                            Rs. 550
+                        </span>
+
+                        <button
+                            class="order-btn"
+                            onclick="orderItem('Classic Burger')"
+                        >
+                            Order
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- FRIES -->
+
+            <div class="menu-card">
+
+                <img
+                    src="https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=800&q=80"
+                    alt="French Fries"
+                >
+
+                <div class="menu-info">
+
+                    <h3>
+                        Crispy Fries
+                    </h3>
+
+                    <p>
+                        Golden crispy fries with delicious seasoning.
+                    </p>
+
+                    <div class="menu-bottom">
+
+                        <span class="price">
+                            Rs. 250
+                        </span>
+
+                        <button
+                            class="order-btn"
+                            onclick="orderItem('Crispy Fries')"
+                        >
+                            Order
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
 
         </div>
 
     </section>
 
 
-    <!-- ABOUT -->
-    <section id="about">
+    <!-- ================= ABOUT ================= -->
 
-        <h2>About Us</h2>
+    <section class="section about" id="about">
 
-        <p>
-            HS Cafe is a friendly place where you can enjoy
-            fresh coffee, delicious food and a relaxing atmosphere.
+        <div>
+
+            <img
+                src="https://images.unsplash.com/photo-1445116572660-236099ec97a0?auto=format&fit=crop&w=1000&q=80"
+                alt="Coffee Shop"
+            >
+
+        </div>
+
+
+        <div class="about-text">
+
+            <h2>
+                More Than Just Coffee
+            </h2>
+
+            <p>
+                At HS BREW, we believe that great coffee
+                is about more than just the drink.
+            </p>
+
+            <p>
+                It's about good conversations, relaxing
+                moments and creating memories with the
+                people you care about.
+            </p>
+
+            <p>
+                Come in, grab your favorite drink and
+                make yourself comfortable.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= CONTACT ================= -->
+
+    <section class="section contact" id="contact">
+
+        <h2 class="section-title">
+            Visit HS BREW
+        </h2>
+
+        <p class="section-subtitle">
+            We'd love to see you
         </p>
 
-        <button onclick="showMessage()">Learn More</button>
+
+        <div class="contact-info">
+
+
+            <div class="contact-box">
+
+                <h3>
+                    📍 Location
+                </h3>
+
+                <p>
+                    Karachi, Pakistan
+                </p>
+
+            </div>
+
+
+            <div class="contact-box">
+
+                <h3>
+                    📞 Phone
+                </h3>
+
+                <p>
+                    +92 330 5079084
+                </p>
+
+            </div>
+
+
+            <div class="contact-box">
+
+                <h3>
+                    🕒 Opening Hours
+                </h3>
+
+                <p>
+                    9:00 AM - 11:00 PM
+                </p>
+
+            </div>
+
+
+        </div>
 
     </section>
 
 
-    <!-- CONTACT -->
-    <section id="contact">
+    <!-- ================= FOOTER ================= -->
 
-        <h2>Contact Us</h2>
-
-        <form id="contactForm">
-
-            <input type="text" placeholder="Your Name" required>
-
-            <input type="email" placeholder="Your Email" required>
-
-            <textarea placeholder="Your Message" required></textarea>
-
-            <button type="submit">Send Message</button>
-
-        </form>
-
-    </section>
-
-
-    <!-- FOOTER -->
     <footer>
 
-        <p>© 2026 HS Cafe. All Rights Reserved.</p>
+        <p>
+            © 2026 HS BREW. All Rights Reserved.
+        </p>
 
     </footer>
 
 
-    <!-- JAVASCRIPT -->
+    <!-- ================= JAVASCRIPT ================= -->
+
     <script>
 
-        function showMessage() {
-            alert("Welcome to HS Cafe!");
+        function orderItem(item) {
+
+            alert(
+                "Thank you! Your order for " +
+                item +
+                " has been selected."
+         C   );
+
         }
 
-        document.getElementById("contactForm").addEventListener("submit", function(event) {
-
-            event.preventDefault();
-
-            alert("Thank you! Your message has been sent.");
-
-            this.reset();
-
-        });
-
     </script>
+
 
 </body>
 </html>
